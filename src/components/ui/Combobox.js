@@ -8,10 +8,12 @@ export default function Combobox({
   className,
   label,
   fullWidth,
+  placeholder,
   displayValue,
   defaultValue,
   loading,
   filterFunction,
+  onSelect,
   options,
   optionKeyField,
   optionThumbnailField,
@@ -34,7 +36,10 @@ export default function Combobox({
       className={fullWidth ? twMerge('w-full', className) : className}
       as="div"
       value={selectedOption}
-      onChange={setSelectedOption}
+      onChange={(val) => {
+        setSelectedOption(val);
+        onSelect(val);
+      }}
     >
       {label && (
         <HeadlessCombobox.Label className="block text-sm font-medium text-gray-100">
@@ -46,6 +51,7 @@ export default function Combobox({
           className={
             'w-full rounded-md py-4 block border-2 border-secondary focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-highlight-100 bg-dark text-gray-100 pr-4'
           }
+          placeholder={placeholder}
           onChange={(e) => setQuery(e.target.value)}
           disabled={loading}
           displayValue={loading ? () => 'Loading...' : displayValue}

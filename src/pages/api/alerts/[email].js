@@ -15,6 +15,7 @@ export default async function handler(req, res) {
       } catch (err) {
         res.status(err.response?.status || 500).json(err.response?.data);
       }
+      return;
     default:
       return res.status(501).json({ error: 'Not Implemented' });
   }

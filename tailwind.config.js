@@ -18,5 +18,5 @@ module.exports = {
       heading: ['Roboto Mono', 'sans-serif'],
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [require('@tailwindcss/forms'), require('@headlessui/tailwindcss')],
 };
