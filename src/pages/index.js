@@ -76,7 +76,7 @@ export default function Home() {
         open={successModalOpen}
         setOpen={setSuccessModalOpen}
         title="Your alert has been created!"
-        description={`We will notify you when a new ${collection.name} NFT is listed for sale${
+        description={`We will notify you when a new ${collection?.name} NFT is listed for sale${
           data.alertType === 'FLOOR_PRICE'
             ? ` for ${priceData.floorPrice} ${priceData.currency} or lower`
             : ''
@@ -120,7 +120,7 @@ export default function Home() {
                       setErrorMessage('');
                     }}
                     filterFunction={(collection, query) =>
-                      collection.name.toLowerCase().includes(query.toLowerCase())
+                      collection?.name.toLowerCase().includes(query.toLowerCase())
                     }
                     placeholder="Search for a collection"
                     displayValue={(collection) => collection?.name}
