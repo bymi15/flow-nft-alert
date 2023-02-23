@@ -13,7 +13,7 @@ import { useNFTCatalogCollectionsQuery } from 'hooks/flow/useNFTCatalogCollectio
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { getUnixExpiry } from 'utils/utils';
+import { getUnixExpiry, matchCollectionByQuery } from 'utils/utils';
 
 export default function Home() {
   const [data, setData] = useNestedState({
@@ -119,9 +119,7 @@ export default function Home() {
                       setCollection(collection);
                       setErrorMessage('');
                     }}
-                    filterFunction={(collection, query) =>
-                      collection?.name.toLowerCase().includes(query.toLowerCase())
-                    }
+                    filterFunction={matchCollectionByQuery}
                     placeholder="Search for a collection"
                     displayValue={(collection) => collection?.name}
                     defaultValue={
