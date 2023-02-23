@@ -215,6 +215,8 @@ export default function Home() {
                               <li>
                                 {createAlertMutation.error.response?.data?.error
                                   ? createAlertMutation.error.response?.data?.error
+                                  : createAlertMutation.error.response?.status === 500
+                                  ? 'The server is experiencing some issues. Please try again later.'
                                   : JSON.stringify(createAlertMutation.error)}
                               </li>
                             )}
