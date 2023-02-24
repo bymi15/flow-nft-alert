@@ -20,7 +20,7 @@ export default function PriceInput({
       <div className="relative mt-1 rounded-md shadow-sm">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
           {currency === 'USD' ? (
-            <span className="text-lg">$</span>
+            <span className="text-lg text-gray-100">$</span>
           ) : currency === 'FLOW' ? (
             <FlowIcon />
           ) : null}
