@@ -95,8 +95,8 @@ export default function Home() {
             </h1>
             <div className="flex justify-center">
               <h2 className="text-lg sm:text-2xl pb-11 text-gray-400 text-center max-w-[640px]">
-                Receive email notifications for new NFT listings for your desired collection in the
-                Flow blockchain
+                Receive email notifications for new listings for your desired collection at your
+                desired price
               </h2>
             </div>
             <div className="flex flex-col items-center">

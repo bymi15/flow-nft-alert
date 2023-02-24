@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -24,12 +25,9 @@ export default function Footer() {
             </li>
           </ul>
           <ul className="flex flex-col mt-8 items-center mb-3 space-y-2 sm:mt-0 sm:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
-            <a
-              href="mailto:bymi15@yahoo.com"
-              className="text-sm text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 tracking-tight"
-            >
-              © 2023 Brian Min
-            </a>
+            <li>
+              <Image src="/built_on_flow.svg" alt="Built on Flow" width={100} height={20} />
+            </li>
           </ul>
         </div>
       </div>
