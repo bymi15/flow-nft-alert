@@ -1,17 +1,10 @@
-import { useQueryClient } from '@tanstack/react-query';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import GithubIcon from './icons/GithubIcon';
 
 export default function Navbar() {
-  const router = useRouter();
-
-  // Get QueryClient from the context
-  const queryClient = useQueryClient();
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [flyer, setFlyer] = useState(false);
 
   return (
     <>

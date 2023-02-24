@@ -88,8 +88,8 @@ export default function Home() {
         }
       />
       <main>
-        <section className="text-gray-600">
-          <div className="max-w-5xl pt-48 pb-24 px-6 sm:px-3 mx-auto">
+        <section>
+          <div className="pt-32">
             <h1 className="font-sans text-5xl sm:text-7xl text-center font-bold text-white mb-6">
               Flow NFT Alert
             </h1>

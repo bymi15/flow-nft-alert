@@ -13,7 +13,7 @@ export default function Layout({ children }) {
   return (
     <div className="min-h-screen">
       <Navbar />
-      {children}
+      <div className="max-w-5xl pt-20 pb-24 px-6 sm:px-3 mx-auto">{children}</div>
       <Footer />
     </div>
   );

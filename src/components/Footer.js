@@ -8,7 +8,7 @@ export default function Footer() {
           <ul className="flex flex-col space-y-2 sm:mb-0 items-center sm:space-y-0 sm:space-x-5 sm:flex-row">
             <li>
               <Link
-                href="/"
+                href="/terms"
                 className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold"
               >
                 Terms of Service
@@ -16,7 +16,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="/"
+                href="/privacy"
                 className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold"
               >
                 Privacy Policy
