@@ -11,6 +11,7 @@ import { useCreateAlertMutation } from 'hooks/api/createAlertMutation';
 import { handleInputChange, useNestedState } from 'hooks/common';
 import { useNFTCatalogCollectionsQuery } from 'hooks/flow/useNFTCatalogCollectionsQuery';
 import Head from 'next/head';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getUnixExpiry, matchCollectionByQuery } from 'utils/utils';
@@ -89,7 +90,10 @@ export default function Home() {
       />
       <main>
         <section>
-          <div className="pt-32">
+          <div className="pt-8">
+            <div className="flex justify-center mb-8">
+              <Image src="/flow-nft-alert-logo.png" alt="Flow NFT Alert" width={160} height={160} />
+            </div>
             <h1 className="font-sans text-5xl sm:text-7xl text-center font-bold text-white mb-6">
               Flow NFT Alert
             </h1>
