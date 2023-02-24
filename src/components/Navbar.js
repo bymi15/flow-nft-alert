@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
@@ -12,7 +13,7 @@ export default function Navbar() {
         <div className="max-w-5xl mx-auto flex flex-wrap p-5 flex-col md:flex-row">
           <div className="flex flex-row items-center justify-between p-3 md:p-1">
             <Link href="/" className="font-sans flex text-xl text-white font-medium mb-4 md:mb-0">
-              Flow NFT Alert
+              <Image src="/android-chrome-192x192.png" width="42" height="42" alt="logo" />
             </Link>
             <button
               className="text-white pb-4 cursor-pointer leading-none px-3 py-1 md:hidden outline-none focus:outline-none content-end ml-auto"
