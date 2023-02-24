@@ -15,7 +15,7 @@ export default function Input({ className, name, optional, label, icon, fullWidt
       )}
       <div className="relative mt-1 rounded-md shadow-sm">
         {icon && (
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <div className="text-gray-100 pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
             {icon}
           </div>
         )}
