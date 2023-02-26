@@ -9,3 +9,15 @@ export const getUnixExpiry = (dateOffsetString) => {
 export const matchCollectionByQuery = (collection, query) =>
   collection?.name.toLowerCase().includes(query.toLowerCase()) ||
   collection?.contractName.toLowerCase().includes(query.toLowerCase());
+
+export const sortCollectionsByName = (collections) => {
+  return collections?.sort((a, b) => {
+    if (a.name < b.name) {
+      return -1;
+    }
+    if (a.name > b.name) {
+      return 1;
+    }
+    return 0;
+  });
+};

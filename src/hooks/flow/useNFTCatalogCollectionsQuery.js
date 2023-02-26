@@ -1,6 +1,7 @@
 import * as fcl from '@onflow/fcl';
 import * as t from '@onflow/types';
 import { useQuery } from '@tanstack/react-query';
+import { sortCollectionsByName } from 'utils/utils';
 
 const cadenceGetCollections = `
 import MetadataViews from 0xMetadataViews
@@ -127,6 +128,7 @@ export const useNFTCatalogCollectionsQuery = () => {
   return useQuery({
     queryKey: ['nftCatalogCollections'],
     queryFn: () => getNFTCatalogCollections(),
+    select: (collections) => sortCollectionsByName(collections),
     cacheTime: 30 * 60 * 1000,
     staleTime: 30 * 60 * 1000,
     refetchOnWindowFocus: false,
