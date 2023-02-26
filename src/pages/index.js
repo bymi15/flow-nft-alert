@@ -79,7 +79,9 @@ export default function Home() {
         title="Your alert has been created!"
         description={`We will notify you when a new ${collection?.name} NFT is listed for sale${
           data.alertType.includes('PRICE')
-            ? ` for ${priceData.price} ${priceData.currency} or lower`
+            ? ` for ${priceData.price} ${priceData.currency} or ${
+                data.alertType === 'PRICE_BELOW' ? 'lower' : 'higher'
+              }`
             : ''
         }`}
         icon={
