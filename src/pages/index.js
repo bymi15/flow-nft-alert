@@ -19,12 +19,12 @@ import { getUnixExpiry, matchCollectionByQuery } from 'utils/utils';
 export default function Home() {
   const [data, setData] = useNestedState({
     email: '',
-    alertType: 'FLOOR_PRICE',
+    alertType: 'PRICE_BELOW',
     nftID: '',
     expiry: '',
   });
   const [priceData, setPriceData] = useNestedState({
-    floorPrice: '0.0',
+    price: '',
     currency: 'FLOW',
   });
   const [successModalOpen, setSuccessModalOpen] = useState(false);
@@ -50,14 +50,14 @@ export default function Home() {
       if (!collection) {
         setErrorMessage('Please select a collection');
         return;
-      } else if (data.alertType === 'FLOOR_PRICE' && !priceData.floorPrice) {
+      } else if (data.alertType.includes('PRICE') && !priceData.price) {
         setErrorMessage('Please enter a floor price');
         return;
       } else if (!data.email) {
         setErrorMessage('Please enter your email address');
         return;
       }
-      const priceDataObj = data.alertType === 'FLOOR_PRICE' ? priceData : {};
+      const priceDataObj = data.alertType.includes('PRICE') ? priceData : {};
       await createAlertMutation.mutateAsync({
         contractName: collection.contractName,
         contractAddress: collection.contractAddress,
@@ -78,8 +78,8 @@ export default function Home() {
         setOpen={setSuccessModalOpen}
         title="Your alert has been created!"
         description={`We will notify you when a new ${collection?.name} NFT is listed for sale${
-          data.alertType === 'FLOOR_PRICE'
-            ? ` for ${priceData.floorPrice} ${priceData.currency} or lower`
+          data.alertType.includes('PRICE')
+            ? ` for ${priceData.price} ${priceData.currency} or lower`
             : ''
         }`}
         icon={
@@ -115,7 +115,7 @@ export default function Home() {
                     onChange={(e) => handleInputChange(e, setData)}
                   />
                 </div>
-                <div className="col-span-4 sm:col-span-3">
+                <div className="col-span-4  sm:col-span-2">
                   <Combobox
                     fullWidth
                     label="NFT Collection"
@@ -142,14 +142,37 @@ export default function Home() {
                     optionDisplayField="name"
                   />
                 </div>
-                <div className="col-span-4 sm:col-span-1">
+                <div className="col-span-4 sm:col-span-2">
+                  <Input
+                    fullWidth
+                    optional
+                    label="Name"
+                    name="name"
+                    value={data.name}
+                    onChange={(e) => handleInputChange(e, setData)}
+                  />
+                </div>
+                <div className="col-span-4 sm:col-span-2">
                   <Input
                     fullWidth
                     optional
                     label="NFT ID"
                     name="nftID"
+                    type="number"
                     icon={<HashtagIcon className="w-5 h-5" />}
                     value={data.nftID}
+                    onChange={(e) => handleInputChange(e, setData)}
+                  />
+                </div>
+                <div className="col-span-4 sm:col-span-2">
+                  <Input
+                    fullWidth
+                    optional
+                    label="Serial Number"
+                    name="serialNumber"
+                    type="number"
+                    icon={<HashtagIcon className="w-5 h-5" />}
+                    value={data.serialNumber}
                     onChange={(e) => handleInputChange(e, setData)}
                   />
                 </div>
@@ -157,23 +180,24 @@ export default function Home() {
                   <Select
                     fullWidth
                     label="Alert Type"
-                    defaultValue={{ label: 'Floor Price', value: 'FLOOR_PRICE' }}
+                    defaultValue={{ label: 'Price Below', value: 'PRICE_BELOW' }}
                     onSelect={(selected) => setData({ alertType: selected.value })}
                     options={[
                       { label: 'New Listing', value: 'NEW_LISTING' },
-                      { label: 'Floor Price', value: 'FLOOR_PRICE' },
+                      { label: 'Price Below', value: 'PRICE_BELOW' },
+                      { label: 'Price Above', value: 'PRICE_ABOVE' },
                     ]}
                   />
                 </div>
-                {data.alertType === 'FLOOR_PRICE' && (
+                {data.alertType.includes('PRICE') && (
                   <div className="col-span-4 sm:col-span-2">
                     <PriceInput
                       fullWidth
-                      label="Floor Price"
-                      defaultPriceValue="0.0"
+                      label="Price"
+                      defaultPriceValue=""
                       defaultCurrencyValue="FLOW"
                       currencyOptions={['FLOW', 'USD']}
-                      onPriceChange={(floorPrice) => setPriceData({ floorPrice })}
+                      onPriceChange={(price) => setPriceData({ price })}
                       onCurrencyChange={(currency) => setPriceData({ currency })}
                     />
                   </div>
@@ -181,7 +205,7 @@ export default function Home() {
                 <div className="col-span-4">
                   <Select
                     fullWidth
-                    label="Recurrence / Duration"
+                    label="Alert Duration"
                     defaultValue={{ label: 'One time', value: undefined }}
                     onSelect={(selected) => setData({ expiry: getUnixExpiry(selected.value) })}
                     options={[

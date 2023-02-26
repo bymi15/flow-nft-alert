@@ -38,7 +38,7 @@ export default function PriceInput({
             setPrice(e.target.value);
             onPriceChange(e.target.value);
           }}
-          placeholder="0.0"
+          placeholder="0"
         />
         <div className="absolute inset-y-0 right-0 flex items-center">
           <label htmlFor="currency" className="sr-only">

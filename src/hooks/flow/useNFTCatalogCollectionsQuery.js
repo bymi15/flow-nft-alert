@@ -120,7 +120,6 @@ export const getNFTCatalogCollections = async () => {
       collections = [...collections, ...fetchedCollections];
     }
   }
-  console.log(collections);
   return collections;
 };
 
