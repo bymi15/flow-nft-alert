@@ -48,14 +48,7 @@ export default function Select({ className, label, defaultValue, fullWidth, onSe
                     }
                     value={option}
                   >
-                    <span
-                      className={twMerge(
-                        selected ? 'font-semibold' : 'font-normal',
-                        'block truncate'
-                      )}
-                    >
-                      {option.label}
-                    </span>
+                    <span className="block truncate font-base">{option.label}</span>
                     {option.value === selected?.value && (
                       <span className={'absolute inset-y-0 right-0 flex items-center pr-4'}>
                         <CheckIcon className="h-5 w-5" aria-hidden="true" />
