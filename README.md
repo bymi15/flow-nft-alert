@@ -1,6 +1,8 @@
 # Flow NFT Alert
 
-Receive email notifications for new NFT listings for your desired collection in the Flow blockchain.
+![csreenshot](./Flow%20NFT%20Alert%20Screenshot.png)
+
+Flow NFT Alert aims to bridge the gap between **collectors** and **marketplaces** with a focus on collector experience.
 
 This is a submission for the [Flow 2023 Hackathon](https://hackathon.flow.com/), including the following:
 
